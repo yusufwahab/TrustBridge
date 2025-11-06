@@ -48,7 +48,7 @@ const Signup = ({ onSignup }) => {
 
   return (
     <div 
-      className="min-h-screen flex items-center justify-center p-6"
+      className="min-h-screen flex items-center justify-center p-4 sm:p-6"
       style={{ 
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${AuthBg})`,
         backgroundSize: 'cover',
@@ -58,16 +58,16 @@ const Signup = ({ onSignup }) => {
     >
       <div className="w-full max-w-md relative z-10">
         {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-            <img src={TrustBridgeLogo} alt="TrustBridge" className="w-16 h-16 object-contain" />
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <img src={TrustBridgeLogo} alt="TrustBridge" className="w-12 h-12 sm:w-16 sm:h-16 object-contain" />
           </div>
-          <h1 className="text-3xl font-black text-white">Create Account</h1>
-          <p className="text-gray-200 mt-2">Join TrustBridge for NDPR compliance</p>
+          <h1 className="text-2xl sm:text-3xl font-black text-white">Create Account</h1>
+          <p className="text-gray-200 mt-2 text-sm sm:text-base">Join TrustBridge for NDPR compliance</p>
         </div>
 
         {/* Signup Form */}
-        <div className="premium-card rounded-3xl p-8">
+        <div className="premium-card rounded-3xl p-6 sm:p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Full Name Field */}
             <div>
@@ -235,7 +235,7 @@ const Signup = ({ onSignup }) => {
         </div>
 
         {/* Features */}
-        <div className="mt-8 grid grid-cols-1 gap-4">
+        <div className="mt-6 sm:mt-8 grid grid-cols-1 gap-3 sm:gap-4">
           <div className="flex items-center gap-3 text-sm text-gray-200">
             <CheckCircle className="h-5 w-5 text-green-400" />
             <span>AI-powered NDPR compliance analysis</span>

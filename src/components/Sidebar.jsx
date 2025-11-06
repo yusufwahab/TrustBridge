@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Home, Building2, FileText, BarChart3, Shield, Users, LogOut, Menu, PlusCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import trustBridgeLogo from '../assets/TrustBridgeLogo.png';
 import { useNavigation } from '../contexts/NavigationContext';
 
@@ -9,6 +9,17 @@ const Sidebar = ({ user, isOpen = true, onToggle }) => {
   const { startNavigation } = useNavigation();
 
   const isActive = (path) => location.pathname === path;
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isOpen && window.innerWidth < 640 && !event.target.closest('.sidebar-container')) {
+        onToggle();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isOpen, onToggle]);
 
   const navItems = [
     { path: '/', label: 'Home', icon: Home },
@@ -21,9 +32,20 @@ const Sidebar = ({ user, isOpen = true, onToggle }) => {
   ];
 
   return (
-    <div className={`fixed left-0 top-0 h-full bg-white border-r border-gray-200 z-40 transition-all duration-300 ${
-      isOpen ? 'w-64' : 'w-16'
-    }`}>
+    <>
+      {/* Mobile hamburger button */}
+      {!isOpen && (
+        <button 
+          onClick={onToggle}
+          className="fixed top-4 left-4 z-50 p-2 bg-white rounded-xl shadow-lg border border-gray-200 sm:hidden"
+        >
+          <Menu className="h-5 w-5 text-gray-600" />
+        </button>
+      )}
+      
+      <div className={`sidebar-container fixed left-0 top-0 h-full bg-white border-r border-gray-200 z-40 transition-all duration-300 ${
+        isOpen ? 'w-64' : 'w-0 sm:w-16'
+      } ${!isOpen ? 'overflow-hidden' : ''}`}>
       {/* Logo */}
       <div className="p-4 border-b border-gray-200">
         {isOpen ? (
@@ -56,14 +78,14 @@ const Sidebar = ({ user, isOpen = true, onToggle }) => {
       </div>
 
       {/* Navigation */}
-      <nav className="p-2">
+      <nav className="p-1 sm:p-2">
         <div className="space-y-2">
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
               onClick={startNavigation}
-              className={`flex items-center ${isOpen ? 'gap-3 px-4' : 'justify-center px-2'} py-3 rounded-xl font-semibold transition-all duration-200 ${
+              className={`flex items-center ${isOpen ? 'gap-3 px-3 sm:px-4' : 'justify-center px-1 sm:px-2'} py-2 sm:py-3 rounded-xl font-semibold transition-all duration-200 text-sm sm:text-base ${
                 isActive(item.path)
                   ? 'bg-blue-600 text-white'
                   : 'text-gray-600 hover:bg-blue-50 hover:text-blue-600'
@@ -107,6 +129,7 @@ const Sidebar = ({ user, isOpen = true, onToggle }) => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

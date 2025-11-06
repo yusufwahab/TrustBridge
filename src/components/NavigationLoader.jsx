@@ -17,10 +17,10 @@ const NavigationLoader = () => {
           <img 
             src={TrustBridgeLogo} 
             alt="TrustBridge" 
-            className="w-16 h-16 mx-auto animate-bounce" 
+            className="w-12 h-12 sm:w-16 sm:h-16 mx-auto animate-bounce" 
           />
         </div>
-        <h3 className="text-xl font-black text-white animate-pulse">TrustBridge</h3>
+        <h3 className="text-lg sm:text-xl font-black text-white animate-pulse">TrustBridge</h3>
       </div>
     </div>
   );

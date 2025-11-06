@@ -31,17 +31,17 @@ const LoadingScreen = ({ onComplete }) => {
       }}
     >
       <div className="text-center">
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <img 
             src={TrustBridgeLogo} 
             alt="TrustBridge" 
-            className="w-24 h-24 mx-auto animate-bounce" 
+            className="w-20 h-20 sm:w-24 sm:h-24 mx-auto animate-bounce" 
           />
         </div>
         
-        <h2 className="text-3xl font-black text-white mb-4 animate-pulse">TrustBridge</h2>
+        <h2 className="text-2xl sm:text-3xl font-black text-white mb-4 animate-pulse">TrustBridge</h2>
         
-        <div className="w-80 bg-gray-600 rounded-full h-3 mx-auto mb-4">
+        <div className="w-64 sm:w-80 bg-gray-600 rounded-full h-3 mx-auto mb-4">
           <div 
             className="bg-blue-400 h-3 rounded-full transition-all duration-300 ease-out"
             style={{ width: `${progress}%` }}

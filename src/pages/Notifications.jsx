@@ -59,22 +59,22 @@ const Notifications = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center">
-              <Bell className="h-6 w-6 text-white" />
+        <div className="mb-6 sm:mb-8">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-2xl flex items-center justify-center">
+              <Bell className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-4xl font-black text-gray-900">Notifications</h1>
-              <p className="text-gray-600">Stay updated with your compliance activities</p>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900">Notifications</h1>
+              <p className="text-gray-600 text-sm sm:text-base">Stay updated with your compliance activities</p>
             </div>
           </div>
           
-          <div className="flex items-center gap-4">
-            <span className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-bold">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+            <span className="px-3 sm:px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-bold">
               {notifications.length} notifications
             </span>
             <button className="text-blue-600 hover:text-blue-700 font-semibold text-sm">
@@ -88,8 +88,8 @@ const Notifications = () => {
           {notifications.map((notification) => {
             const IconComponent = notification.icon;
             return (
-              <div key={notification.id} className="premium-card rounded-2xl p-6 hover:shadow-lg transition-all duration-200">
-                <div className="flex items-start gap-4">
+              <div key={notification.id} className="premium-card rounded-2xl p-4 sm:p-6 hover:shadow-lg transition-all duration-200">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${getIconColor(notification.color)}`}>
                     <IconComponent className="h-6 w-6" />
                   </div>
@@ -107,11 +107,11 @@ const Notifications = () => {
                       {notification.message}
                     </p>
                     
-                    <div className="flex items-center gap-3">
-                      <button className="px-4 py-2 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors">
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                      <button className="px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors text-sm sm:text-base">
                         View Details
                       </button>
-                      <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors">
+                      <button className="px-3 sm:px-4 py-2 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">
                         Dismiss
                       </button>
                     </div>

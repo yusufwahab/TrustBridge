@@ -34,7 +34,7 @@ const Login = ({ onLogin }) => {
 
   return (
     <div 
-      className="min-h-screen flex items-center justify-center p-6"
+      className="min-h-screen flex items-center justify-center p-4 sm:p-6"
       style={{ 
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${AuthBg})`,
         backgroundSize: 'cover',
@@ -44,16 +44,16 @@ const Login = ({ onLogin }) => {
     >
       <div className="w-full max-w-md relative z-10">
         {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-            <img src={TrustBridgeLogo} alt="TrustBridge" className="w-16 h-16 object-contain" />
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <img src={TrustBridgeLogo} alt="TrustBridge" className="w-12 h-12 sm:w-16 sm:h-16 object-contain" />
           </div>
-          <h1 className="text-3xl font-black text-white">Welcome Back</h1>
-          <p className="text-gray-200 mt-2">Sign in to your TrustBridge account</p>
+          <h1 className="text-2xl sm:text-3xl font-black text-white">Welcome Back</h1>
+          <p className="text-gray-200 mt-2 text-sm sm:text-base">Sign in to your TrustBridge account</p>
         </div>
 
         {/* Login Form */}
-        <div className="premium-card rounded-3xl p-8">
+        <div className="premium-card rounded-3xl p-6 sm:p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Email Field */}
             <div>
@@ -101,7 +101,7 @@ const Login = ({ onLogin }) => {
             </div>
 
             {/* Remember Me & Forgot Password */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
               <label className="flex items-center">
                 <input type="checkbox" className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
                 <span className="ml-2 text-sm text-gray-600">Remember me</span>

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Building2, FileText, BarChart3, Shield, Users, LogOut, Menu, PlusCircle, Zap, Activity, Bell, Settings, User, Monitor, History, Eye } from 'lucide-react';
+import { Home, Building2, FileText, BarChart3, Shield, Users, LogOut, Menu, PlusCircle, Zap, Activity, Bell, Settings, User, Monitor, History, Eye, AlertTriangle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import trustBridgeLogo from '../assets/TrustBridgeLogo.png';
 import { useNavigation } from '../contexts/NavigationContext';
@@ -26,6 +26,7 @@ const Sidebar = ({ user, isOpen = true, onToggle, onLogout }) => {
     { path: '/companies', label: 'Companies', icon: Building2 },
     { path: '/data-connections', label: 'My Data', icon: Shield },
     { path: '/policy-upload', label: 'Policy Upload', icon: FileText },
+    { path: '/nitda-complaint', label: 'File Complaint', icon: AlertTriangle },
     { path: '/action-history', label: 'Action History', icon: Activity },
     { path: '/settings', label: 'Settings', icon: Settings },
   ];
@@ -121,13 +122,13 @@ const Sidebar = ({ user, isOpen = true, onToggle, onLogout }) => {
                 <div className="text-xs text-gray-500">NDPR Platform</div>
               </div>
             </Link>
-            <button 
-              onClick={onLogout}
+            <Link 
+              to="/"
               className="w-full flex items-center gap-3 px-4 py-2 text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-xl font-semibold transition-all duration-200"
             >
               <LogOut className="h-4 w-4" />
               <span className="text-sm">Sign Out</span>
-            </button>
+            </Link>
           </>
         ) : (
           <div className="flex flex-col items-center gap-2">
@@ -142,12 +143,12 @@ const Sidebar = ({ user, isOpen = true, onToggle, onLogout }) => {
             >
               <User className="h-5 w-5 text-white" />
             </Link>
-            <button 
-              onClick={onLogout}
+            <Link 
+              to="/"
               className="p-2 text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-xl transition-all duration-200"
             >
               <LogOut className="h-4 w-4" />
-            </button>
+            </Link>
           </div>
         )}
       </div>

@@ -144,31 +144,31 @@ const DataUsageMonitor = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-gray-50 p-3 sm:p-6">
+      <div className="max-w-6xl mx-auto px-2 sm:px-0">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-black text-gray-900 mb-2">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-gray-900 mb-2">
                 Data Usage <span className="text-blue-600">Monitor</span>
               </h1>
-              <p className="text-gray-600">
+              <p className="text-sm sm:text-base text-gray-600">
                 Monitor where, when, and how companies access your personal data
               </p>
             </div>
             <Link 
-              to="/citizen-request" 
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all duration-200 gap-2"
+              to="/data-usage-monitor" 
+              className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-lg sm:rounded-xl font-bold hover:bg-blue-700 transition-all duration-200 gap-2 text-sm sm:text-base"
             >
-              <Shield className="h-5 w-5" />
-              Data Rights
+              <Shield className="h-4 w-4 sm:h-5 sm:w-5" />
+              View Monitor
             </Link>
           </div>
         </div>
 
         {/* Auto-Revoke Alert */}
-        <div className="bg-orange-50 border border-orange-200 rounded-2xl p-6 mb-8">
+        <div className="bg-orange-50 border border-orange-200 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8">
           <div className="flex items-start gap-4">
             <div className="p-3 bg-orange-100 rounded-xl">
               <Clock className="h-6 w-6 text-orange-600" />
@@ -186,69 +186,69 @@ const DataUsageMonitor = () => {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-green-100 rounded-xl">
-                <CheckCircle className="h-6 w-6 text-green-600" />
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-8">
+          <div className="bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-sm border border-gray-200">
+            <div className="flex items-center justify-between mb-2 sm:mb-4">
+              <div className="p-2 sm:p-3 bg-green-100 rounded-lg sm:rounded-xl">
+                <CheckCircle className="h-4 w-4 sm:h-6 sm:w-6 text-green-600" />
               </div>
-              <span className="text-2xl font-black text-gray-900">
+              <span className="text-lg sm:text-2xl font-black text-gray-900">
                 {notifications.filter(n => n.status === 'active').length}
               </span>
             </div>
-            <h3 className="font-semibold text-gray-900">Active Access</h3>
-            <p className="text-sm text-gray-600">Currently accessing data</p>
+            <h3 className="text-sm sm:text-base font-semibold text-gray-900">Active Access</h3>
+            <p className="text-xs sm:text-sm text-gray-600">Currently accessing data</p>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-yellow-100 rounded-xl">
-                <Clock className="h-6 w-6 text-yellow-600" />
+          <div className="bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-sm border border-gray-200">
+            <div className="flex items-center justify-between mb-2 sm:mb-4">
+              <div className="p-2 sm:p-3 bg-yellow-100 rounded-lg sm:rounded-xl">
+                <Clock className="h-4 w-4 sm:h-6 sm:w-6 text-yellow-600" />
               </div>
-              <span className="text-2xl font-black text-gray-900">
+              <span className="text-lg sm:text-2xl font-black text-gray-900">
                 {notifications.filter(n => n.status === 'pending').length}
               </span>
             </div>
-            <h3 className="font-semibold text-gray-900">Pending Requests</h3>
-            <p className="text-sm text-gray-600">Awaiting your approval</p>
+            <h3 className="text-sm sm:text-base font-semibold text-gray-900">Pending Requests</h3>
+            <p className="text-xs sm:text-sm text-gray-600">Awaiting your approval</p>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-blue-100 rounded-xl">
-                <Shield className="h-6 w-6 text-blue-600" />
+          <div className="bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-sm border border-gray-200">
+            <div className="flex items-center justify-between mb-2 sm:mb-4">
+              <div className="p-2 sm:p-3 bg-blue-100 rounded-lg sm:rounded-xl">
+                <Shield className="h-4 w-4 sm:h-6 sm:w-6 text-blue-600" />
               </div>
-              <span className="text-2xl font-black text-gray-900">
+              <span className="text-lg sm:text-2xl font-black text-gray-900">
                 {notifications.filter(n => n.status === 'completed').length}
               </span>
             </div>
-            <h3 className="font-semibold text-gray-900">Completed</h3>
-            <p className="text-sm text-gray-600">Finished processing</p>
+            <h3 className="text-sm sm:text-base font-semibold text-gray-900">Completed</h3>
+            <p className="text-xs sm:text-sm text-gray-600">Finished processing</p>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-            <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-red-100 rounded-xl">
-                <XCircle className="h-6 w-6 text-red-600" />
+          <div className="bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-sm border border-gray-200">
+            <div className="flex items-center justify-between mb-2 sm:mb-4">
+              <div className="p-2 sm:p-3 bg-red-100 rounded-lg sm:rounded-xl">
+                <XCircle className="h-4 w-4 sm:h-6 sm:w-6 text-red-600" />
               </div>
-              <span className="text-2xl font-black text-gray-900">
+              <span className="text-lg sm:text-2xl font-black text-gray-900">
                 {notifications.filter(n => n.status === 'revoked').length}
               </span>
             </div>
-            <h3 className="font-semibold text-gray-900">Revoked</h3>
-            <p className="text-sm text-gray-600">Access denied/removed</p>
+            <h3 className="text-sm sm:text-base font-semibold text-gray-900">Revoked</h3>
+            <p className="text-xs sm:text-sm text-gray-600">Access denied/removed</p>
           </div>
         </div>
 
         {/* Filters */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 mb-8">
-          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Filter className="h-5 w-5 text-gray-600" />
+        <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-sm border border-gray-200 mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center justify-between">
+            <div className="flex items-center gap-2 sm:gap-4 w-full sm:w-auto">
+              <Filter className="h-4 w-4 sm:h-5 sm:w-5 text-gray-600 flex-shrink-0" />
               <select
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 sm:flex-none px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
               >
                 <option value="all">All Status</option>
                 <option value="active">Active</option>
@@ -258,12 +258,12 @@ const DataUsageMonitor = () => {
               </select>
             </div>
 
-            <div className="flex items-center gap-4">
-              <Calendar className="h-5 w-5 text-gray-600" />
+            <div className="flex items-center gap-2 sm:gap-4 w-full sm:w-auto">
+              <Calendar className="h-4 w-4 sm:h-5 sm:w-5 text-gray-600 flex-shrink-0" />
               <select
                 value={timeRange}
                 onChange={(e) => setTimeRange(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 sm:flex-none px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
               >
                 <option value="today">Today</option>
                 <option value="week">This Week</option>
@@ -275,32 +275,32 @@ const DataUsageMonitor = () => {
         </div>
 
         {/* Notifications List */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {filteredNotifications.map((notification) => (
-            <div key={notification.id} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-              <div className="flex items-start justify-between">
-                <div className="flex items-start gap-4 flex-1">
-                  <div className="p-3 bg-blue-100 rounded-xl">
-                    <Building2 className="h-6 w-6 text-blue-600" />
+            <div key={notification.id} className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-sm border border-gray-200">
+              <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
+                <div className="flex items-start gap-3 sm:gap-4 flex-1 w-full">
+                  <div className="p-2 sm:p-3 bg-blue-100 rounded-lg sm:rounded-xl flex-shrink-0">
+                    <Building2 className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                   </div>
                   
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="font-bold text-gray-900">{notification.company}</h3>
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(notification.status)}`}>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                      <h3 className="text-sm sm:text-base font-bold text-gray-900">{notification.company}</h3>
+                      <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(notification.status)} w-fit`}>
                         {notification.status.charAt(0).toUpperCase() + notification.status.slice(1)}
                       </span>
                     </div>
                     
-                    <p className="text-gray-600 mb-2">
+                    <p className="text-sm sm:text-base text-gray-600 mb-2">
                       <span className="font-semibold">{notification.action}</span> - {notification.dataType}
                     </p>
                     
-                    <p className="text-sm text-gray-500 mb-3">
+                    <p className="text-xs sm:text-sm text-gray-500 mb-3">
                       Purpose: {notification.purpose}
                     </p>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600 mb-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600 mb-3">
                       <div>
                         <span className="font-semibold">Location:</span> {notification.location}
                       </div>
@@ -315,7 +315,7 @@ const DataUsageMonitor = () => {
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs sm:text-sm text-gray-500">
                       <span>{notification.timestamp.toLocaleString()}</span>
                       {notification.autoRevoke && (
                         <span className="text-orange-600 font-semibold">
@@ -326,20 +326,20 @@ const DataUsageMonitor = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 ml-4">
+                <div className="flex items-center gap-2 w-full sm:w-auto sm:ml-4">
                   {getStatusIcon(notification.status)}
                   
                   {notification.status === 'pending' && (
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 flex-1 sm:flex-none">
                       <button
                         onClick={() => handleGrantAccess(notification.id)}
-                        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold"
+                        className="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-xs sm:text-sm font-semibold"
                       >
                         Grant
                       </button>
                       <button
                         onClick={() => handleRevokeAccess(notification.id)}
-                        className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm font-semibold"
+                        className="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-xs sm:text-sm font-semibold"
                       >
                         Deny
                       </button>
@@ -349,7 +349,7 @@ const DataUsageMonitor = () => {
                   {notification.status === 'active' && (
                     <button
                       onClick={() => handleRevokeAccess(notification.id)}
-                      className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm font-semibold"
+                      className="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-xs sm:text-sm font-semibold"
                     >
                       Revoke
                     </button>
@@ -361,10 +361,10 @@ const DataUsageMonitor = () => {
         </div>
 
         {filteredNotifications.length === 0 && (
-          <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-200 text-center">
-            <Eye className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">No notifications found</h3>
-            <p className="text-gray-600">No data usage notifications match your current filters.</p>
+          <div className="bg-white p-8 sm:p-12 rounded-xl sm:rounded-2xl shadow-sm border border-gray-200 text-center">
+            <Eye className="h-10 w-10 sm:h-12 sm:w-12 text-gray-400 mx-auto mb-3 sm:mb-4" />
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">No notifications found</h3>
+            <p className="text-sm sm:text-base text-gray-600">No data usage notifications match your current filters.</p>
           </div>
         )}
       </div>

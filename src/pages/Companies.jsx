@@ -123,7 +123,7 @@ const Companies = () => {
               NDPR Compliant
             </div>
             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mb-4 sm:mb-6 tracking-tight">
-              Trusted <span className="text-yellow-300">Companies</span>
+              Trusted <span className="text-blue-300">Companies</span>
             </h1>
             <p className="text-sm sm:text-lg lg:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed px-4">
               Discover companies committed to data protection.
@@ -131,7 +131,7 @@ const Companies = () => {
             <div className="mt-6 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
               <Link 
                 to="/register-company"
-                className="inline-flex items-center px-4 py-3 sm:px-6 sm:py-4 bg-yellow-400 text-gray-900 rounded-xl sm:rounded-2xl font-bold hover:bg-yellow-300 transition-all duration-200 text-sm sm:text-base"
+                className="inline-flex items-center px-4 py-3 sm:px-6 sm:py-4 bg-white text-blue-600 rounded-xl sm:rounded-2xl font-bold hover:bg-gray-100 transition-all duration-200 text-sm sm:text-base"
               >
                 <Building2 className="h-4 w-4 mr-2" />
                 Register Company

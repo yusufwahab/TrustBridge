@@ -261,7 +261,7 @@ const PolicyUpload = () => {
                 }`}
               >
                 <tab.icon className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
-                <span className="text-xs sm:text-sm lg:text-base">{tab.label}</span>
+                <span className="text-xs sm:text-sm lg:text-base hidden sm:inline">{tab.label}</span>
               </button>
             ))}
           </div>
@@ -279,20 +279,35 @@ const PolicyUpload = () => {
                     className="w-full h-48 sm:h-64 p-4 sm:p-6 border-2 border-gray-300 rounded-xl sm:rounded-2xl focus:border-blue-500 focus:outline-none resize-none text-gray-700 text-sm sm:text-base"
                   />
                 </div>
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-between">
                   <button
-                    onClick={handleTextSubmit}
-                    disabled={!policyText.trim() || isAnalyzing || showAnalysisModal}
-                    className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white rounded-xl sm:rounded-2xl font-bold hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all duration-200 text-sm sm:text-base"
+                    onClick={() => {
+                      if (policyText.trim()) {
+                        const utterance = new SpeechSynthesisUtterance(policyText);
+                        speechSynthesis.speak(utterance);
+                      }
+                    }}
+                    disabled={!policyText.trim()}
+                    className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gray-500 text-white rounded-xl sm:rounded-2xl font-bold hover:bg-gray-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all duration-200 text-sm sm:text-base"
                   >
-                    {isAnalyzing || showAnalysisModal ? 'Analyzing...' : 'Analyze Policy'}
+                    <Volume2 className="h-4 w-4 inline mr-2" />
+                    Read Aloud
                   </button>
-                  <button
-                    onClick={() => setPolicyText('')}
-                    className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gray-100 text-gray-700 rounded-xl sm:rounded-2xl font-bold hover:bg-gray-200 transition-all duration-200 text-sm sm:text-base"
-                  >
-                    Clear Text
-                  </button>
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    <button
+                      onClick={handleTextSubmit}
+                      disabled={!policyText.trim() || isAnalyzing || showAnalysisModal}
+                      className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white rounded-xl sm:rounded-2xl font-bold hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all duration-200 text-sm sm:text-base"
+                    >
+                      {isAnalyzing || showAnalysisModal ? 'Analyzing...' : 'Analyze Policy'}
+                    </button>
+                    <button
+                      onClick={() => setPolicyText('')}
+                      className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gray-100 text-gray-700 rounded-xl sm:rounded-2xl font-bold hover:bg-gray-200 transition-all duration-200 text-sm sm:text-base"
+                    >
+                      Clear Text
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
@@ -541,6 +556,19 @@ const PolicyUpload = () => {
               >
                 <Download className="h-4 w-4 sm:h-5 sm:w-5" />
                 Download PDF
+              </button>
+              <button 
+                onClick={() => {
+                  if (analysisResult) {
+                    const resultText = `Compliance Score: ${analysisResult.compliance_score || 0}%. Risk Level: ${analysisResult.risk_level || 'Medium'}. ${analysisResult.gaps?.length || 3} issues found.`;
+                    const utterance = new SpeechSynthesisUtterance(resultText);
+                    speechSynthesis.speak(utterance);
+                  }
+                }}
+                className="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gray-500 text-white rounded-xl sm:rounded-2xl font-bold hover:bg-gray-600 transition-all duration-200 text-sm sm:text-base"
+              >
+                <Volume2 className="h-4 w-4 sm:h-5 sm:w-5" />
+                Read Results
               </button>
             </div>
           </div>

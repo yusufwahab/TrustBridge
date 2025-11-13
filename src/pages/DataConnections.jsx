@@ -109,13 +109,7 @@ const DataConnections = () => {
             </h1>
             <p className="text-base sm:text-xl text-gray-600">Manage your data connections with companies</p>
           </div>
-          <Link 
-            to="/connect-company"
-            className="flex items-center justify-center gap-3 px-4 sm:px-6 py-3 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 text-sm sm:text-base"
-          >
-            <Plus className="h-4 w-4 sm:h-5 sm:w-5" />
-            Connect Company
-          </Link>
+
         </div>
 
         {/* Stats Cards */}
@@ -215,13 +209,16 @@ const DataConnections = () => {
                     Last activity: {connection.lastActivity}
                   </div>
                   <div className="flex flex-col sm:flex-row gap-2">
-                    <button className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-blue-50 text-blue-600 rounded-lg sm:rounded-xl font-semibold hover:bg-blue-100 transition-all duration-200 text-sm">
+                    <Link 
+                      to="/data-usage-monitor"
+                      className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-blue-50 text-blue-600 rounded-lg sm:rounded-xl font-semibold hover:bg-blue-100 transition-all duration-200 text-sm"
+                    >
                       <Eye className="h-4 w-4" />
                       <span className="hidden sm:inline">View Details</span>
                       <span className="sm:hidden">View</span>
-                    </button>
+                    </Link>
                     <Link 
-                      to="/data-usage-monitor"
+                      to="/citizen-request"
                       className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-gray-50 text-gray-600 rounded-lg sm:rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 text-sm"
                     >
                       <Shield className="h-4 w-4" />

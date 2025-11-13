@@ -72,6 +72,8 @@ const Homepage = () => {
               </div>
             </div>
             <nav className="flex items-center space-x-2 sm:space-x-4 lg:space-x-8">
+              <a href="#features" className="text-gray-600 hover:text-blue-600 font-semibold transition-colors text-sm sm:text-base hidden md:inline">Features</a>
+              <a href="#companies" className="text-gray-600 hover:text-blue-600 font-semibold transition-colors text-sm sm:text-base hidden md:inline">Companies</a>
               <Link to="/login" className="text-gray-600 hover:text-blue-600 font-semibold transition-colors text-sm sm:text-base hidden sm:inline">Login</Link>
               <Link to="/login" className="px-3 sm:px-4 lg:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-xl sm:rounded-2xl font-bold hover:bg-blue-700 transition-all text-sm sm:text-base">Get Started</Link>
             </nav>
@@ -91,17 +93,13 @@ const Homepage = () => {
       >
         <div className="relative max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="text-center">
-            <div className={`inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-blue-100 rounded-full text-blue-800 text-xs sm:text-sm font-bold mb-6 sm:mb-8 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-              <Shield className="h-3 w-3 sm:h-4 sm:w-4 mr-2 text-blue-600" />
-              Now supporting NDPR 2024 updates
-            </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 sm:mb-8 leading-tight">
               Nigerian Data<br />
-              <span style={{color: 'var(--color-blue-600)'}}>Compliance</span><br />
+              <span className="text-white">Compliance</span><br />
               <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-200 font-light">Simplified</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-12 px-4">
-              TrustBridge <span style={{color: 'var(--color-blue-600)'}} className="font-semibold">empowers</span> organizations and citizens with <span style={{color: 'var(--color-blue-600)'}} className="font-semibold">real-time</span> data usage alerts, AI-powered NDPR policy analysis, and actionable compliance insights, giving users <span style={{color: 'var(--color-blue-600)'}} className="font-semibold">control</span>, businesses clarity, and everyone <span style={{color: 'var(--color-blue-600)'}} className="font-semibold">confidence</span> in data privacy.
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-12 px-4">
+              TrustBridge <span className="font-semibold text-blue-600">empowers</span> organizations and citizens with <span className="font-semibold text-blue-600">real-time</span> data usage alerts, AI-powered NDPR policy analysis, and actionable compliance insights, giving users <span className="font-semibold text-blue-600">control</span>, businesses clarity, and everyone <span className="font-semibold text-blue-600">confidence</span> in data privacy.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-12 sm:mb-16 px-4">
               <Link 
@@ -150,31 +148,22 @@ const Homepage = () => {
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <div className={`premium-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl text-center bg-white border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('problem') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '200ms'}}>
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 transform hover:rotate-12 transition-transform duration-300">
-                <Eye className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
-              </div>
               <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3 sm:mb-4">Lack of Transparency</h3>
               <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                 Most citizens are unaware when or how their personal data is accessed or shared. This <span className="text-blue-600 font-semibold">lack of transparency</span> weakens trust and makes it hard for individuals to exercise their NDPR rights.
               </p>
             </div>
             
-            <div className={`premium-card p-8 rounded-3xl text-center bg-white border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('problem') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '400ms'}}>
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6 transform hover:rotate-12 transition-transform duration-300">
-                <Clock className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-black text-gray-900 mb-4">Costly Legal Compliance</h3>
-              <p className="text-gray-600 leading-relaxed">
+            <div className={`premium-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl text-center bg-white border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('problem') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '400ms'}}>
+              <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3 sm:mb-4">Costly Legal Compliance</h3>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                 Organizations often rely on <span className="text-blue-600 font-semibold">expensive legal consultations</span> to interpret NDPR laws and draft compliant policies, slowing down operations and increasing costs.
               </p>
             </div>
             
-            <div className={`premium-card p-8 rounded-3xl text-center bg-white border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('problem') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '600ms'}}>
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6 transform hover:rotate-12 transition-transform duration-300">
-                <AlertTriangle className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-black text-gray-900 mb-4">No Compliance Insights</h3>
-              <p className="text-gray-600 leading-relaxed">
+            <div className={`premium-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl text-center bg-white border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('problem') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '600ms'}}>
+              <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3 sm:mb-4">No Compliance Insights</h3>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                 Companies struggle to assess how compliant they really are or track improvements over time. <span className="text-blue-600 font-semibold">Manual reviews</span> provide little visibility into real NDPR performance.
               </p>
             </div>
@@ -195,32 +184,23 @@ const Homepage = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className={`premium-card p-8 rounded-3xl text-center bg-blue-50 border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('solution') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '200ms'}}>
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Bell className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-black text-gray-900 mb-4">Real-Time Notifications</h3>
-              <p className="text-gray-600 leading-relaxed">
+            <div className={`premium-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl text-center bg-blue-50 border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('solution') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '200ms'}}>
+              <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3 sm:mb-4">Real-Time Notifications</h3>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                 <span className="text-blue-600 font-semibold">TrustBridge Real-Time Data Usage Notifications</span> give users instant alerts whenever their data is accessed, processed, or shared — fostering trust and accountability.
               </p>
             </div>
             
-            <div className={`premium-card p-8 rounded-3xl text-center bg-blue-50 border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('solution') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '400ms'}}>
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Zap className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-black text-gray-900 mb-4">AI-Powered Analysis</h3>
-              <p className="text-gray-600 leading-relaxed">
+            <div className={`premium-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl text-center bg-blue-50 border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('solution') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '400ms'}}>
+              <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3 sm:mb-4">AI-Powered Analysis</h3>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                 <span className="text-blue-600 font-semibold">AI-Powered Policy Analysis</span> automates NDPR interpretation, identifies compliance gaps, and suggests corrective actions in seconds — eliminating costly legal assistance.
               </p>
             </div>
             
-            <div className={`premium-card p-8 rounded-3xl text-center bg-blue-50 border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('solution') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '600ms'}}>
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <BarChart3 className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-black text-gray-900 mb-4">Analytics Dashboard</h3>
-              <p className="text-gray-600 leading-relaxed">
+            <div className={`premium-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl text-center bg-blue-50 border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('solution') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '600ms'}}>
+              <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3 sm:mb-4">Analytics Dashboard</h3>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                 <span className="text-blue-600 font-semibold">TrustBridge Compliance Analytics Dashboard</span> delivers statistical NDPR insights — showing compliance scores, risk levels, and progress metrics in real time.
               </p>
             </div>
@@ -242,63 +222,45 @@ const Homepage = () => {
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <div className={`premium-card p-8 rounded-3xl bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '100ms'}}>
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                <BookOpen className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-black text-gray-900 mb-4">NDPR Compliance Toolkit</h3>
-              <p className="text-gray-700 leading-relaxed">
+            <div className={`premium-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '100ms'}}>
+              <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3 sm:mb-4">NDPR Compliance Toolkit</h3>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                 Complete toolkit with <span className="text-blue-600 font-semibold">ready-to-use templates</span> and comprehensive guides for NDPR compliance implementation
               </p>
             </div>
             
-            <div className={`premium-card p-8 rounded-3xl bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '200ms'}}>
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                <Settings className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-black text-gray-900 mb-4">Policy Creation & Management</h3>
-              <p className="text-gray-700 leading-relaxed">
-                <span className="text-green-600 font-semibold">Create and manage</span> data protection policies with AI-powered suggestions and automated updates
+            <div className={`premium-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '200ms'}}>
+              <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3 sm:mb-4">Policy Creation & Management</h3>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                <span className="text-blue-600 font-semibold">Create and manage</span> data protection policies with AI-powered suggestions and automated updates
               </p>
             </div>
             
-            <div className={`premium-card p-8 rounded-3xl bg-gradient-to-br from-red-50 to-red-100 border-2 border-red-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '300ms'}}>
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                <Bell className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-black text-gray-900 mb-4">Breach Response Tools</h3>
-              <p className="text-gray-700 leading-relaxed">
-                <span className="text-red-600 font-semibold">Automated breach detection</span> and notification tools to ensure rapid response and regulatory compliance
+            <div className={`premium-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-red-50 to-red-100 border-2 border-red-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '300ms'}}>
+              <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3 sm:mb-4">Breach Response Tools</h3>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                <span className="text-blue-600 font-semibold">Automated breach detection</span> and notification tools to ensure rapid response and regulatory compliance
               </p>
             </div>
             
-            <div className={`premium-card p-8 rounded-3xl bg-gradient-to-br from-purple-50 to-purple-100 border-2 border-purple-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '400ms'}}>
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                <GraduationCap className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-black text-gray-900 mb-4">Training & Awareness</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Comprehensive <span className="text-purple-600 font-semibold">employee training programs</span> and awareness campaigns for data protection best practices
+            <div className={`premium-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-purple-50 to-purple-100 border-2 border-purple-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '400ms'}}>
+              <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3 sm:mb-4">Training & Awareness</h3>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                Comprehensive <span className="text-blue-600 font-semibold">employee training programs</span> and awareness campaigns for data protection best practices
               </p>
             </div>
             
-            <div className={`premium-card p-8 rounded-3xl bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '500ms'}}>
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                <Eye className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-black text-gray-900 mb-4">Ongoing Monitoring</h3>
-              <p className="text-gray-700 leading-relaxed">
-                <span className="text-orange-600 font-semibold">Real-time monitoring</span> and compliance tracking with automated alerts and detailed reporting
+            <div className={`premium-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '500ms'}}>
+              <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3 sm:mb-4">Ongoing Monitoring</h3>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                <span className="text-blue-600 font-semibold">Real-time monitoring</span> and compliance tracking with automated alerts and detailed reporting
               </p>
             </div>
             
-            <div className={`premium-card p-8 rounded-3xl bg-gradient-to-br from-indigo-50 to-indigo-100 border-2 border-indigo-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '600ms'}}>
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                <HeadphonesIcon className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-black text-gray-900 mb-4">Expert Guidance</h3>
-              <p className="text-gray-700 leading-relaxed">
-                <span className="text-indigo-600 font-semibold">Expert guidance and support</span> for data protection and NDPR compliance from certified professionals
+            <div className={`premium-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-indigo-50 to-indigo-100 border-2 border-indigo-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '600ms'}}>
+              <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3 sm:mb-4">Expert Guidance</h3>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                <span className="text-blue-600 font-semibold">Expert guidance and support</span> for data protection and NDPR compliance from certified professionals
               </p>
             </div>
           </div>
@@ -346,7 +308,7 @@ const Homepage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-blue-600 to-indigo-700">
+      <section className="py-12 sm:py-16 lg:py-24 bg-blue-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-5xl font-black text-white mb-6">
             Ready to Get Started?

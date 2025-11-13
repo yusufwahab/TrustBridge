@@ -7,6 +7,7 @@ const CitizenRequest = () => {
     name: '',
     email: '',
     requestType: '',
+    dataType: '',
     description: ''
   });
   const [submitted, setSubmitted] = useState(false);
@@ -14,7 +15,17 @@ const CitizenRequest = () => {
   const requestTypes = [
     { value: 'access', label: 'Access My Data', description: 'Get a copy of all personal data held about you' },
     { value: 'correction', label: 'Correct My Data', description: 'Update or correct inaccurate personal information' },
-    { value: 'erasure', label: 'Delete My Data', description: 'Request deletion of your personal data' }
+    { value: 'erasure', label: 'Delete My Data', description: 'Request deletion of your personal data' },
+    { value: 'revoke', label: 'Revoke Access', description: 'Revoke previously granted data access permissions' }
+  ];
+
+  const dataTypes = [
+    { value: 'personal', label: 'Personal Data', description: 'Name, address, phone number, email' },
+    { value: 'financial', label: 'Financial Data', description: 'Bank details, transaction history, payment info' },
+    { value: 'biometric', label: 'Biometric Data', description: 'Fingerprints, facial recognition, voice prints' },
+    { value: 'location', label: 'Location Data', description: 'GPS coordinates, travel history, check-ins' },
+    { value: 'behavioral', label: 'Behavioral Data', description: 'Browsing history, preferences, usage patterns' },
+    { value: 'health', label: 'Health Data', description: 'Medical records, fitness data, health metrics' }
   ];
 
   const handleInputChange = (e) => {
@@ -52,7 +63,7 @@ const CitizenRequest = () => {
             </div>
             <h2 className="text-2xl font-black text-gray-900 mb-4">Request Submitted!</h2>
             <p className="text-gray-600 mb-6">
-              Your data request has been submitted successfully. The company has 30 days to respond under NDPR regulations.
+              Your data request has been submitted successfully. The company must respond within a maximum of 5 days under NDPR regulations.
             </p>
             <div className="bg-blue-50 rounded-xl p-4 mb-6 border border-blue-200">
               <p className="text-gray-900 font-bold mb-2">Request ID: DSR-{Math.random().toString(36).substr(2, 9).toUpperCase()}</p>
@@ -159,6 +170,25 @@ const CitizenRequest = () => {
             </div>
           </div>
 
+          {/* Data Type Selection */}
+          <div className="mb-8">
+            <h3 className="text-lg font-bold text-gray-900 mb-4">Type of Data</h3>
+            <select
+              name="dataType"
+              value={formData.dataType}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-gray-900 focus:border-blue-500 focus:outline-none"
+            >
+              <option value="">Select data type...</option>
+              {dataTypes.map((type) => (
+                <option key={type.value} value={type.value}>
+                  {type.label} - {type.description}
+                </option>
+              ))}
+            </select>
+          </div>
+
           {/* Additional Details */}
           <div className="mb-8">
             <label className="block text-gray-900 font-bold mb-2">Additional Details (Optional)</label>
@@ -179,8 +209,8 @@ const CitizenRequest = () => {
           <div className="mb-8 p-4 bg-blue-50 rounded-xl border border-blue-200">
             <h4 className="font-bold text-gray-900 mb-2">Your Rights Under NDPR</h4>
             <ul className="text-gray-600 text-sm space-y-1">
-              <li>• Companies must respond within 30 days</li>
-              <li>• You have the right to access, correct, or delete your data</li>
+              <li>• <strong>Companies must respond within a maximum of 5 days</strong></li>
+              <li>• You have the right to access, correct, delete, or revoke access to your data</li>
               <li>• Companies cannot charge fees for legitimate requests</li>
               <li>• You can file a complaint with NITDA if unsatisfied</li>
             </ul>
@@ -189,7 +219,7 @@ const CitizenRequest = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={!formData.name || !formData.email || !formData.requestType}
+            disabled={!formData.name || !formData.email || !formData.requestType || !formData.dataType}
             className="w-full bg-blue-600 text-white p-4 rounded-xl font-bold hover:bg-blue-700 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Send className="h-5 w-5" />

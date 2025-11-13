@@ -19,6 +19,7 @@ import Remediation from './pages/Remediation';
 import Certificate from './pages/Certificate';
 import DSRManagement from './pages/DSRManagement';
 import CitizenRequest from './pages/CitizenRequest';
+import NITDAComplaint from './pages/NITDAComplaint';
 import QuickCompliance from './pages/QuickCompliance';
 import SystemStatus from './pages/SystemStatus';
 import Login from './pages/Login';
@@ -234,6 +235,7 @@ const AppContent = () => {
           <Route path="/compliance-score" element={<ComplianceScore />} />
           <Route path="/remediation" element={<Remediation />} />
           <Route path="/certificate" element={<Certificate />} />
+          <Route path="/nitda-complaint" element={<NITDAComplaint />} />
           
           <Route path="/citizen-request" element={
             <ProtectedRoute>

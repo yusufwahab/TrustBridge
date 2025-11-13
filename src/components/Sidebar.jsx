@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Building2, FileText, BarChart3, Shield, Users, LogOut, Menu, PlusCircle, Zap, Activity } from 'lucide-react';
+import { Home, Building2, FileText, BarChart3, Shield, Users, LogOut, Menu, PlusCircle, Zap, Activity, Bell, Settings, User, Monitor, History, Eye } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import trustBridgeLogo from '../assets/TrustBridgeLogo.png';
 import { useNavigation } from '../contexts/NavigationContext';
@@ -25,13 +25,9 @@ const Sidebar = ({ user, isOpen = true, onToggle, onLogout }) => {
     { path: '/dashboard', label: 'Dashboard', icon: BarChart3 },
     { path: '/companies', label: 'Companies', icon: Building2 },
     { path: '/data-connections', label: 'My Data', icon: Shield },
-    { path: '/consent-management', label: 'Consent Control', icon: Shield },
-    { path: '/citizen-request', label: 'Data Rights', icon: Users },
-    { path: '/register-company', label: 'Register Company', icon: PlusCircle },
     { path: '/policy-upload', label: 'Policy Upload', icon: FileText },
-    { path: '/quick-compliance', label: 'Quick Check', icon: Zap },
     { path: '/action-history', label: 'Action History', icon: Activity },
-    { path: '/system-status', label: 'System Status', icon: Activity },
+    { path: '/settings', label: 'Settings', icon: Settings },
   ];
 
   return (
@@ -81,7 +77,7 @@ const Sidebar = ({ user, isOpen = true, onToggle, onLogout }) => {
       </div>
 
       {/* Navigation */}
-      <nav className="p-1 sm:p-2">
+      <nav className="p-1 sm:p-2 overflow-y-auto" style={{ height: 'calc(100vh - 200px)' }}>
         <div className="space-y-2">
           {navItems.map((item) => (
             <Link
@@ -109,15 +105,22 @@ const Sidebar = ({ user, isOpen = true, onToggle, onLogout }) => {
       <div className="absolute bottom-0 left-0 right-0 p-2 border-t border-gray-200">
         {isOpen ? (
           <>
-            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl mb-2">
+            <Link 
+              to="/user-profile"
+              onClick={() => {
+                startNavigation();
+                if (window.innerWidth < 640) onToggle();
+              }}
+              className="flex items-center gap-3 p-3 bg-gray-50 hover:bg-blue-50 rounded-xl mb-2 transition-all duration-200 cursor-pointer"
+            >
               <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
-                <Users className="h-5 w-5 text-white" />
+                <User className="h-5 w-5 text-white" />
               </div>
               <div className="flex-1">
                 <div className="text-sm font-bold text-gray-900">{user?.name || 'User'}</div>
                 <div className="text-xs text-gray-500">NDPR Platform</div>
               </div>
-            </div>
+            </Link>
             <button 
               onClick={onLogout}
               className="w-full flex items-center gap-3 px-4 py-2 text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-xl font-semibold transition-all duration-200"
@@ -128,9 +131,17 @@ const Sidebar = ({ user, isOpen = true, onToggle, onLogout }) => {
           </>
         ) : (
           <div className="flex flex-col items-center gap-2">
-            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
-              <Users className="h-5 w-5 text-white" />
-            </div>
+            <Link 
+              to="/user-profile"
+              onClick={() => {
+                startNavigation();
+                if (window.innerWidth < 640) onToggle();
+              }}
+              className="w-10 h-10 bg-blue-600 hover:bg-blue-700 rounded-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
+              title="Profile"
+            >
+              <User className="h-5 w-5 text-white" />
+            </Link>
             <button 
               onClick={onLogout}
               className="p-2 text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-xl transition-all duration-200"

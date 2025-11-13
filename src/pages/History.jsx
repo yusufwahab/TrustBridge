@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Calendar, Filter, Download, Eye, FileText, Shield, Clock, CheckCircle, Building2, Users, Bell, Zap } from 'lucide-react';
+import { Calendar, Filter, Download, Eye, FileText, Shield, Clock, CheckCircle } from 'lucide-react';
 
-const ActionHistory = () => {
+const History = () => {
   const [filter, setFilter] = useState('all');
   const [dateRange, setDateRange] = useState('month');
 
@@ -32,7 +32,7 @@ const ActionHistory = () => {
       description: 'Successfully connected to Paystack for data monitoring',
       timestamp: new Date('2024-01-13T09:15:00'),
       status: 'active',
-      icon: Building2
+      icon: CheckCircle
     },
     {
       id: 4,
@@ -47,7 +47,7 @@ const ActionHistory = () => {
       id: 5,
       type: 'policy_analysis',
       title: 'Policy Update Analysis',
-      description: 'Re-analyzed privacy policy after updates - Score improved to 85%',
+      description: 'Re-analyzed privacy policy after updates',
       timestamp: new Date('2024-01-10T11:00:00'),
       status: 'completed',
       score: 85,
@@ -57,46 +57,9 @@ const ActionHistory = () => {
       id: 6,
       type: 'data_request',
       title: 'Data Correction Request',
-      description: 'Processed data correction request from citizen - Personal details updated',
+      description: 'Processed data correction request from citizen',
       timestamp: new Date('2024-01-08T13:30:00'),
-      status: 'completed',
-      icon: Eye
-    },
-    {
-      id: 7,
-      type: 'notification_sent',
-      title: 'Data Usage Notification',
-      description: 'Sent real-time notification to user about Jumia data access',
-      timestamp: new Date('2024-01-07T16:20:00'),
-      status: 'delivered',
-      icon: Bell
-    },
-    {
-      id: 8,
-      type: 'compliance_check',
-      title: 'Automated Compliance Check',
-      description: 'Performed scheduled NDPR compliance verification',
-      timestamp: new Date('2024-01-05T09:00:00'),
-      status: 'completed',
-      score: 82,
-      icon: Zap
-    },
-    {
-      id: 9,
-      type: 'user_registration',
-      title: 'New User Registration',
-      description: 'User account created and verified successfully',
-      timestamp: new Date('2024-01-03T14:15:00'),
-      status: 'completed',
-      icon: Users
-    },
-    {
-      id: 10,
-      type: 'data_request',
-      title: 'Data Erasure Request',
-      description: 'Processed data deletion request - All personal data removed',
-      timestamp: new Date('2024-01-01T11:30:00'),
-      status: 'completed',
+      status: 'pending',
       icon: Eye
     }
   ];
@@ -109,8 +72,6 @@ const ActionHistory = () => {
         return 'bg-blue-100 text-blue-800 border-blue-200';
       case 'pending':
         return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'delivered':
-        return 'bg-purple-100 text-purple-800 border-purple-200';
       default:
         return 'bg-gray-100 text-gray-800 border-gray-200';
     }
@@ -126,12 +87,6 @@ const ActionHistory = () => {
         return 'bg-purple-100 text-purple-600';
       case 'certificate_generated':
         return 'bg-orange-100 text-orange-600';
-      case 'notification_sent':
-        return 'bg-indigo-100 text-indigo-600';
-      case 'compliance_check':
-        return 'bg-yellow-100 text-yellow-600';
-      case 'user_registration':
-        return 'bg-pink-100 text-pink-600';
       default:
         return 'bg-gray-100 text-gray-600';
     }
@@ -148,10 +103,10 @@ const ActionHistory = () => {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-black text-gray-900 mb-2">
-            Event <span className="text-blue-600">History</span>
+            Activity <span className="text-blue-600">History</span>
           </h1>
           <p className="text-gray-600">
-            Complete history of all platform activities, compliance events, and user interactions
+            Complete history of your NDPR compliance activities and data requests
           </p>
         </div>
 
@@ -167,7 +122,7 @@ const ActionHistory = () => {
               </span>
             </div>
             <h3 className="font-semibold text-gray-900">Policy Analyses</h3>
-            <p className="text-sm text-gray-600">Compliance assessments</p>
+            <p className="text-sm text-gray-600">Completed assessments</p>
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
@@ -186,7 +141,7 @@ const ActionHistory = () => {
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 bg-purple-100 rounded-xl">
-                <Building2 className="h-6 w-6 text-purple-600" />
+                <CheckCircle className="h-6 w-6 text-purple-600" />
               </div>
               <span className="text-2xl font-black text-gray-900">
                 {historyData.filter(item => item.type === 'company_connection').length}
@@ -198,15 +153,15 @@ const ActionHistory = () => {
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
             <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-indigo-100 rounded-xl">
-                <Bell className="h-6 w-6 text-indigo-600" />
+              <div className="p-3 bg-orange-100 rounded-xl">
+                <FileText className="h-6 w-6 text-orange-600" />
               </div>
               <span className="text-2xl font-black text-gray-900">
-                {historyData.filter(item => item.type === 'notification_sent').length}
+                {historyData.filter(item => item.type === 'certificate_generated').length}
               </span>
             </div>
-            <h3 className="font-semibold text-gray-900">Notifications</h3>
-            <p className="text-sm text-gray-600">Alerts sent</p>
+            <h3 className="font-semibold text-gray-900">Certificates</h3>
+            <p className="text-sm text-gray-600">Generated documents</p>
           </div>
         </div>
 
@@ -220,14 +175,11 @@ const ActionHistory = () => {
                 onChange={(e) => setFilter(e.target.value)}
                 className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                <option value="all">All Events</option>
+                <option value="all">All Activities</option>
                 <option value="policy_analysis">Policy Analysis</option>
                 <option value="data_request">Data Requests</option>
                 <option value="company_connection">Connections</option>
                 <option value="certificate_generated">Certificates</option>
-                <option value="notification_sent">Notifications</option>
-                <option value="compliance_check">Compliance Checks</option>
-                <option value="user_registration">User Events</option>
               </select>
             </div>
 
@@ -296,8 +248,8 @@ const ActionHistory = () => {
         {filteredHistory.length === 0 && (
           <div className="bg-white p-12 rounded-2xl shadow-sm border border-gray-200 text-center">
             <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">No events found</h3>
-            <p className="text-gray-600">No events match your current filters.</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">No activities found</h3>
+            <p className="text-gray-600">No activities match your current filters.</p>
           </div>
         )}
       </div>
@@ -305,4 +257,4 @@ const ActionHistory = () => {
   );
 };
 
-export default ActionHistory;
+export default History;

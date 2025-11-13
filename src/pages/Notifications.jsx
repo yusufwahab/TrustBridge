@@ -1,9 +1,23 @@
 import { Bell, CheckCircle, AlertTriangle, Clock, FileText, Shield, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Notifications = () => {
   const notifications = [
     {
       id: 1,
+      type: 'data_request',
+      title: 'Data Access Request from Jumia Nigeria',
+      message: 'Jumia Nigeria is requesting access to your personal information (name, email, phone number) and delivery address for order processing and delivery services. This request will auto-expire in 25 minutes if not responded to.',
+      time: '5 minutes ago',
+      icon: Shield,
+      color: 'yellow',
+      company: 'Jumia Nigeria',
+      dataTypes: ['Personal Information', 'Contact Details', 'Delivery Address'],
+      purpose: 'Order Processing and Delivery',
+      location: 'Lagos, Nigeria'
+    },
+    {
+      id: 2,
       type: 'success',
       title: 'Compliance Certificate Generated',
       message: 'Your NDPR compliance certificate has been successfully generated and is ready for download.',
@@ -107,14 +121,28 @@ const Notifications = () => {
                       {notification.message}
                     </p>
                     
-                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                      <button className="px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors text-sm sm:text-base">
-                        View Details
-                      </button>
-                      <button className="px-3 sm:px-4 py-2 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">
-                        Dismiss
-                      </button>
-                    </div>
+                    {notification.type === 'data_request' ? (
+                      <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                        <Link 
+                          to="/data-usage-monitor"
+                          className="px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors text-sm sm:text-base text-center"
+                        >
+                          View Details
+                        </Link>
+                        <button className="px-3 sm:px-4 py-2 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">
+                          Dismiss
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                        <button className="px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors text-sm sm:text-base">
+                          View Details
+                        </button>
+                        <button className="px-3 sm:px-4 py-2 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base">
+                          Dismiss
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

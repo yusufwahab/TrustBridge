@@ -40,7 +40,7 @@ const ComplianceScore = () => {
         </div>
 
         {/* Score Card */}
-        <div className="glass-effect rounded-2xl p-8 mb-8">
+        <div className="glass-effect backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-8 mb-8">
           <div className="flex flex-col md:flex-row items-center gap-8">
             {/* Score Circle */}
             <div className="relative">
@@ -92,7 +92,7 @@ const ComplianceScore = () => {
         </div>
 
         {/* Issues List */}
-        <div className="glass-effect rounded-2xl p-8 mb-8">
+        <div className="glass-effect backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-8 mb-8">
           <h3 className="text-xl font-bold text-dark-text mb-6">Compliance Issues</h3>
           <div className="space-y-4">
             {issues.map((issue) => (
@@ -128,7 +128,7 @@ const ComplianceScore = () => {
         </div>
 
         {/* Next Steps */}
-        <div className="glass-effect rounded-2xl p-8">
+        <div className="glass-effect backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-8">
           <h3 className="text-xl font-bold text-dark-text mb-4">Next Steps</h3>
           <p className="text-dark-text-secondary mb-6">
             Ready to fix these issues and improve your compliance score? Our Remediation Assistant will guide you through each fix.

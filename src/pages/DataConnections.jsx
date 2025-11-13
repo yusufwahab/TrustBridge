@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Building2, CheckCircle, Clock, AlertCircle, Eye, Shield, Download, Plus, Search, Filter } from 'lucide-react';
+import { Building2, CheckCircle, Clock, AlertCircle, Eye, Shield, Plus, Search, Filter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // Import company logos
@@ -28,7 +28,7 @@ const DataConnections = () => {
       id: 2,
       company: 'GTBank',
       logo: GTBankLogo,
-      status: 'pending',
+      status: 'connected',
       dataTypes: ['Account Info', 'Transaction History', 'KYC Data'],
       connectedDate: '2024-01-20',
       lastActivity: '1 day ago',
@@ -48,20 +48,20 @@ const DataConnections = () => {
       id: 4,
       company: 'Paystack',
       logo: PaystackLogo,
-      status: 'invited',
+      status: 'connected',
       dataTypes: ['Payment Methods', 'Transaction History'],
       connectedDate: '2024-01-22',
-      lastActivity: 'Never',
+      lastActivity: '3 hours ago',
       complianceScore: 90
     },
     {
       id: 5,
       company: 'Interswitch',
       logo: InterswitchLogo,
-      status: 'disconnected',
+      status: 'connected',
       dataTypes: ['Profile Data', 'Payment History'],
       connectedDate: '2023-12-05',
-      lastActivity: '2 weeks ago',
+      lastActivity: '1 day ago',
       complianceScore: 75
     }
   ];
@@ -125,16 +125,16 @@ const DataConnections = () => {
             <div className="text-xs sm:text-sm font-semibold text-gray-600">Total Companies</div>
           </div>
           <div className="premium-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 text-center">
-            <div className="text-2xl sm:text-3xl font-black text-green-600 mb-1 sm:mb-2">{stats.connected}</div>
+            <div className="text-2xl sm:text-3xl font-black text-green-600 mb-1 sm:mb-2">{stats.total}</div>
             <div className="text-xs sm:text-sm font-semibold text-gray-600">Connected</div>
           </div>
           <div className="premium-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 text-center">
-            <div className="text-2xl sm:text-3xl font-black text-yellow-600 mb-1 sm:mb-2">{stats.pending}</div>
-            <div className="text-xs sm:text-sm font-semibold text-gray-600">Pending</div>
+            <div className="text-2xl sm:text-3xl font-black text-blue-600 mb-1 sm:mb-2">24</div>
+            <div className="text-xs sm:text-sm font-semibold text-gray-600">Data Requests</div>
           </div>
           <div className="premium-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 text-center">
-            <div className="text-2xl sm:text-3xl font-black text-blue-600 mb-1 sm:mb-2">{stats.invited}</div>
-            <div className="text-xs sm:text-sm font-semibold text-gray-600">Invited</div>
+            <div className="text-2xl sm:text-3xl font-black text-purple-600 mb-1 sm:mb-2">98%</div>
+            <div className="text-xs sm:text-sm font-semibold text-gray-600">Avg Compliance</div>
           </div>
         </div>
 
@@ -220,11 +220,14 @@ const DataConnections = () => {
                       <span className="hidden sm:inline">View Details</span>
                       <span className="sm:hidden">View</span>
                     </button>
-                    <button className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-gray-50 text-gray-600 rounded-lg sm:rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 text-sm">
-                      <Download className="h-4 w-4" />
-                      <span className="hidden sm:inline">Export Data</span>
-                      <span className="sm:hidden">Export</span>
-                    </button>
+                    <Link 
+                      to="/data-usage-monitor"
+                      className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-gray-50 text-gray-600 rounded-lg sm:rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 text-sm"
+                    >
+                      <Shield className="h-4 w-4" />
+                      <span className="hidden sm:inline">Data Rights</span>
+                      <span className="sm:hidden">Rights</span>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -234,62 +234,62 @@ const PolicyUpload = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-gray-50 p-3 sm:p-6">
+      <div className="max-w-6xl mx-auto px-2 sm:px-0">
         {/* Header - Hidden when analysis is complete */}
         {!analysisComplete && (
-        <div className="mb-8">
-          <h1 className="text-2xl sm:text-4xl font-black text-gray-900 mb-4">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-xl sm:text-2xl lg:text-4xl font-black text-gray-900 mb-3 sm:mb-4">
             Policy <span className="text-blue-600">Analysis</span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600">Upload your privacy policy for AI-powered NDPR compliance analysis</p>
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600">Upload your privacy policy for AI-powered NDPR compliance analysis</p>
         </div>
         )}
 
         {/* Tabs - Hidden when analysis is complete */}
         {!analysisComplete && (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 mb-8">
-          <div className="flex border-b border-gray-200">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-200 mb-6 sm:mb-8">
+          <div className="flex border-b border-gray-200 overflow-x-auto">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 flex items-center justify-center gap-3 px-6 py-4 font-semibold transition-all duration-200 ${
+                className={`flex-1 flex items-center justify-center gap-1 sm:gap-3 px-2 sm:px-6 py-3 sm:py-4 font-semibold transition-all duration-200 whitespace-nowrap min-w-0 ${
                   activeTab === tab.id
                     ? 'bg-blue-600 text-white border-b-2 border-blue-600'
                     : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
                 }`}
               >
-                <tab.icon className="h-5 w-5" />
-                {tab.label}
+                <tab.icon className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+                <span className="text-xs sm:text-sm lg:text-base">{tab.label}</span>
               </button>
             ))}
           </div>
 
-          <div className="p-8">
+          <div className="p-4 sm:p-6 lg:p-8">
             {/* Text Input Tab */}
             {activeTab === 'text' && (
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Enter Policy Text</h3>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Enter Policy Text</h3>
                   <textarea
                     value={policyText}
                     onChange={(e) => setPolicyText(e.target.value)}
                     placeholder="Type or paste your privacy policy text here..."
-                    className="w-full h-64 p-6 border-2 border-gray-300 rounded-2xl focus:border-blue-500 focus:outline-none resize-none text-gray-700"
+                    className="w-full h-48 sm:h-64 p-4 sm:p-6 border-2 border-gray-300 rounded-xl sm:rounded-2xl focus:border-blue-500 focus:outline-none resize-none text-gray-700 text-sm sm:text-base"
                   />
                 </div>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                   <button
                     onClick={handleTextSubmit}
                     disabled={!policyText.trim() || isAnalyzing || showAnalysisModal}
-                    className="flex-1 sm:flex-none px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all duration-200"
+                    className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white rounded-xl sm:rounded-2xl font-bold hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all duration-200 text-sm sm:text-base"
                   >
                     {isAnalyzing || showAnalysisModal ? 'Analyzing...' : 'Analyze Policy'}
                   </button>
                   <button
                     onClick={() => setPolicyText('')}
-                    className="flex-1 sm:flex-none px-8 py-4 bg-gray-100 text-gray-700 rounded-2xl font-bold hover:bg-gray-200 transition-all duration-200"
+                    className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gray-100 text-gray-700 rounded-xl sm:rounded-2xl font-bold hover:bg-gray-200 transition-all duration-200 text-sm sm:text-base"
                   >
                     Clear Text
                   </button>
@@ -451,7 +451,7 @@ const PolicyUpload = () => {
             </div>
 
             {/* Score Overview */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 text-center">
                 <div className="relative w-20 h-20 mx-auto mb-4">
                   <svg className="w-20 h-20 transform -rotate-90" viewBox="0 0 100 100">
@@ -528,18 +528,18 @@ const PolicyUpload = () => {
             </div>
 
             {/* Actions */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button 
                 onClick={() => setShowDetailedReport(true)}
-                className="flex-1 flex items-center justify-center gap-3 p-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition-all duration-200"
+                className="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-blue-600 text-white rounded-xl sm:rounded-2xl font-bold hover:bg-blue-700 transition-all duration-200 text-sm sm:text-base"
               >
-                <Eye className="h-5 w-5" />
+                <Eye className="h-4 w-4 sm:h-5 sm:w-5" />
                 View Full Report
               </button>
               <button 
-                className="flex-1 flex items-center justify-center gap-3 p-4 bg-green-600 text-white rounded-2xl font-bold hover:bg-green-700 transition-all duration-200"
+                className="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-green-600 text-white rounded-xl sm:rounded-2xl font-bold hover:bg-green-700 transition-all duration-200 text-sm sm:text-base"
               >
-                <Download className="h-5 w-5" />
+                <Download className="h-4 w-4 sm:h-5 sm:w-5" />
                 Download PDF
               </button>
             </div>
@@ -548,14 +548,14 @@ const PolicyUpload = () => {
 
         {/* Error Modal */}
         {error && (
-          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50 backdrop-blur-sm">
-            <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-8 text-center max-w-md mx-4">
-              <AlertTriangle className="h-16 w-16 text-red-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Analysis Failed</h3>
-              <p className="text-red-600 mb-6">{error}</p>
+          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50 backdrop-blur-sm p-4">
+            <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl border border-gray-200 p-6 sm:p-8 text-center max-w-md w-full">
+              <AlertTriangle className="h-12 w-12 sm:h-16 sm:w-16 text-red-600 mx-auto mb-3 sm:mb-4" />
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Analysis Failed</h3>
+              <p className="text-sm sm:text-base text-red-600 mb-4 sm:mb-6">{error}</p>
               <button
                 onClick={() => setError(null)}
-                className="px-6 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all duration-200"
+                className="px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-lg sm:rounded-xl font-bold hover:bg-blue-700 transition-all duration-200 text-sm sm:text-base"
               >
                 Try Again
               </button>
@@ -565,8 +565,8 @@ const PolicyUpload = () => {
 
         {/* Analysis Modal */}
         {(showAnalysisModal || isAnalyzing) && (
-          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50 backdrop-blur-sm">
-            <div className="bg-white rounded-3xl p-8 max-w-4xl w-full mx-4 shadow-2xl animate-in fade-in zoom-in duration-300">
+          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50 backdrop-blur-sm p-4">
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 max-w-4xl w-full shadow-2xl animate-in fade-in zoom-in duration-300">
               <AnalysisProgress progress={progress} onCancel={() => { setShowAnalysisModal(false); setIsAnalyzing(false); }} onComplete={handleAnalysisComplete} />
             </div>
           </div>

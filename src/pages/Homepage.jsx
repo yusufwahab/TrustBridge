@@ -62,20 +62,18 @@ const Homepage = () => {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="glass-effect fixed w-full top-0 z-50 backdrop-blur-xl border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center gap-4">
-              <img src={trustBridgeLogo} alt="TrustBridge Logo" className="h-16 w-auto" />
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+          <div className="flex justify-between items-center h-16 sm:h-20">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <img src={trustBridgeLogo} alt="TrustBridge Logo" className="h-10 sm:h-12 lg:h-16 w-auto" />
               <div>
-                <span className="text-3xl font-black text-blue-600">TrustBridge</span>
-                <div className="text-xs text-gray-500 font-semibold -mt-1">NDPR COMPLIANCE</div>
+                <span className="text-lg sm:text-2xl lg:text-3xl font-black text-blue-600">TrustBridge</span>
+                <div className="text-xs text-gray-500 font-semibold -mt-1 hidden sm:block">NDPR COMPLIANCE</div>
               </div>
             </div>
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-600 hover:text-blue-600 font-semibold transition-colors">Features</a>
-              <a href="#companies" className="text-gray-600 hover:text-blue-600 font-semibold transition-colors">Companies</a>
-              <Link to="/login" className="text-gray-600 hover:text-blue-600 font-semibold transition-colors">Login</Link>
-              <Link to="/login" className="px-6 py-3 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition-all">Get Started</Link>
+            <nav className="flex items-center space-x-2 sm:space-x-4 lg:space-x-8">
+              <Link to="/login" className="text-gray-600 hover:text-blue-600 font-semibold transition-colors text-sm sm:text-base hidden sm:inline">Login</Link>
+              <Link to="/login" className="px-3 sm:px-4 lg:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-xl sm:rounded-2xl font-bold hover:bg-blue-700 transition-all text-sm sm:text-base">Get Started</Link>
             </nav>
           </div>
         </div>
@@ -83,7 +81,7 @@ const Homepage = () => {
 
       {/* Hero Section */}
       <section 
-        className="relative pt-32 pb-20 overflow-hidden"
+        className="relative pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 overflow-hidden"
         style={{ 
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${AuthBg})`,
           backgroundSize: 'cover',
@@ -91,33 +89,33 @@ const Homepage = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="text-center">
-            <div className={`inline-flex items-center px-6 py-3 bg-blue-100 rounded-full text-blue-800 text-sm font-bold mb-8 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-              <Shield className="h-4 w-4 mr-2 text-blue-600" />
+            <div className={`inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-blue-100 rounded-full text-blue-800 text-xs sm:text-sm font-bold mb-6 sm:mb-8 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+              <Shield className="h-3 w-3 sm:h-4 sm:w-4 mr-2 text-blue-600" />
               Now supporting NDPR 2024 updates
             </div>
-            <h1 className="text-6xl md:text-7xl font-black text-white mb-8 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-6 sm:mb-8 leading-tight">
               Nigerian Data<br />
               <span style={{color: 'var(--color-blue-600)'}}>Compliance</span><br />
-              <span className="text-4xl md:text-5xl text-gray-200 font-light">Simplified</span>
+              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-200 font-light">Simplified</span>
             </h1>
-            <p className="text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed mb-12">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-12 px-4">
               TrustBridge <span style={{color: 'var(--color-blue-600)'}} className="font-semibold">empowers</span> organizations and citizens with <span style={{color: 'var(--color-blue-600)'}} className="font-semibold">real-time</span> data usage alerts, AI-powered NDPR policy analysis, and actionable compliance insights, giving users <span style={{color: 'var(--color-blue-600)'}} className="font-semibold">control</span>, businesses clarity, and everyone <span style={{color: 'var(--color-blue-600)'}} className="font-semibold">confidence</span> in data privacy.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-12 sm:mb-16 px-4">
               <Link 
                 to="/login" 
-                className="inline-flex items-center px-10 py-5 bg-blue-600 text-white text-xl rounded-2xl font-bold hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg"
+                className="inline-flex items-center justify-center px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 bg-blue-600 text-white text-base sm:text-lg lg:text-xl rounded-xl sm:rounded-2xl font-bold hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg"
               >
                 Start Free Compliance Check
-                <ArrowRight className="h-6 w-6 ml-3 text-white" />
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 ml-2 sm:ml-3 text-white" />
               </Link>
               <button 
                 onClick={() => alert('Sorry, the video is not available now')}
-                className="inline-flex items-center px-10 py-5 bg-white border-2 border-blue-600 text-blue-600 text-xl rounded-2xl font-bold hover:bg-blue-50 transition-all duration-200"
+                className="inline-flex items-center justify-center px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 bg-white border-2 border-blue-600 text-blue-600 text-base sm:text-lg lg:text-xl rounded-xl sm:rounded-2xl font-bold hover:bg-blue-50 transition-all duration-200"
               >
-                <Play className="h-6 w-6 mr-3 text-blue-600" />
+                <Play className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 mr-2 sm:mr-3 text-blue-600" />
                 Watch Demo
               </button>
             </div>
@@ -139,24 +137,24 @@ const Homepage = () => {
       </section>
 
       {/* Problem Statement */}
-      <section id="problem" ref={el => sectionRefs.current.problem = el} className="py-24 bg-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`text-center mb-16 transform transition-all duration-1000 ${visibleSections.has('problem') ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <h2 className="text-5xl font-black text-gray-900 mb-6">
+      <section id="problem" ref={el => sectionRefs.current.problem = el} className="py-12 sm:py-16 lg:py-24 bg-blue-50">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+          <div className={`text-center mb-12 sm:mb-16 transform transition-all duration-1000 ${visibleSections.has('problem') ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4 sm:mb-6">
               The <span className="text-blue-600">Problem</span>
             </h2>
-            <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto px-4">
               Critical challenges in data transparency and NDPR compliance
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className={`premium-card p-8 rounded-3xl text-center bg-white border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('problem') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '200ms'}}>
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6 transform hover:rotate-12 transition-transform duration-300">
-                <Eye className="h-8 w-8 text-blue-600" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className={`premium-card p-6 sm:p-8 rounded-2xl sm:rounded-3xl text-center bg-white border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('problem') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '200ms'}}>
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 transform hover:rotate-12 transition-transform duration-300">
+                <Eye className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-black text-gray-900 mb-4">Lack of Transparency</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3 sm:mb-4">Lack of Transparency</h3>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                 Most citizens are unaware when or how their personal data is accessed or shared. This <span className="text-blue-600 font-semibold">lack of transparency</span> weakens trust and makes it hard for individuals to exercise their NDPR rights.
               </p>
             </div>
@@ -231,19 +229,19 @@ const Homepage = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" ref={el => sectionRefs.current.features = el} className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`text-center mb-16 transform transition-all duration-1000 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <h2 className="text-5xl font-black text-gray-900 mb-6">
+      <section id="features" ref={el => sectionRefs.current.features = el} className="py-12 sm:py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+          <div className={`text-center mb-12 sm:mb-16 transform transition-all duration-1000 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4 sm:mb-6">
               Comprehensive <span className="text-blue-600">Features</span>
             </h2>
-            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
               Automate <span className="text-blue-600 font-semibold">NDPR compliance</span> with AI-powered analysis. 
               Empower <span className="text-blue-600 font-semibold">citizens</span> to control their data rights with transparency and trust.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <div className={`premium-card p-8 rounded-3xl bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 transform transition-all duration-700 hover:scale-105 ${visibleSections.has('features') ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`} style={{transitionDelay: '100ms'}}>
               <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
                 <BookOpen className="h-8 w-8 text-white" />
@@ -320,18 +318,18 @@ const Homepage = () => {
 
 
       {/* Companies Section */}
-      <section id="companies" ref={el => sectionRefs.current.companies = el} className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`text-center mb-16 transform transition-all duration-1000 ${visibleSections.has('companies') ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <h2 className="text-5xl font-black text-gray-900 mb-6">
+      <section id="companies" ref={el => sectionRefs.current.companies = el} className="py-12 sm:py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+          <div className={`text-center mb-12 sm:mb-16 transform transition-all duration-1000 ${visibleSections.has('companies') ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4 sm:mb-6">
               Trusted by <span className="text-blue-600">Leading Companies</span>
             </h2>
-            <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto px-4">
               Join Nigeria's top companies in achieving <span className="text-blue-600 font-semibold">NDPR compliance</span>
             </p>
           </div>
           
-          <div className={`grid grid-cols-2 md:grid-cols-5 gap-8 items-center transform transition-all duration-1000 ${visibleSections.has('companies') ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{transitionDelay: '300ms'}}>
+          <div className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 items-center transform transition-all duration-1000 ${visibleSections.has('companies') ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{transitionDelay: '300ms'}}>
             {[
               { logo: FlutterwaveLogo, name: 'Flutterwave' },
               { logo: PaystackLogo, name: 'Paystack' },

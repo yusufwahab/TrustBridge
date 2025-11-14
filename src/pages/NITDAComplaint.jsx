@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AlertTriangle, Upload, Send, CheckCircle, X, Menu, Loader2, XCircle } from 'lucide-react';
+import { AlertTriangle, Upload, Send, CheckCircle, X, Menu, Loader2, XCircle, Hash } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
 
 const NITDAComplaint = () => {
@@ -13,6 +13,7 @@ const NITDAComplaint = () => {
     
     // Respondent Information
     respondentName: '',
+    trackingId: '',
     respondentType: 'controller',
     respondentAddress: '',
     sector: '',
@@ -247,6 +248,22 @@ const NITDAComplaint = () => {
                   ))}
                 </select>
               </div>
+              {formData.respondentName && (
+                <div>
+                  <label className="block text-sm font-bold text-gray-900 mb-2">Tracking ID</label>
+                  <div className="relative">
+                    <Hash className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <input
+                      type="text"
+                      name="trackingId"
+                      value={formData.trackingId}
+                      onChange={handleInputChange}
+                      className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none text-sm sm:text-base"
+                      placeholder="TB-XXXXXXXXX"
+                    />
+                  </div>
+                </div>
+              )}
               <div>
                 <label className="block text-sm font-bold text-gray-900 mb-2">Entity Type</label>
                 <select

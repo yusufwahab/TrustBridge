@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Building2, MapPin, Star, Shield, TrendingUp, Users, Award, CheckCircle } from 'lucide-react';
+import { Building2, MapPin, Star, Shield, TrendingUp, Users, Award, CheckCircle, Loader2, Check, AlertCircle } from 'lucide-react';
+import { useState } from 'react';
 
 // Import company assets
 import JumiaLogo from '../assets/Jumia_logo.jpg';
@@ -16,6 +17,11 @@ import GTBankLogo from '../assets/Gtbank_logo.png';
 import GTBankBuild from '../assets/GTBank_building.jpeg';
 
 const Companies = () => {
+  const [connectionModal, setConnectionModal] = useState(null);
+  const [connectionStep, setConnectionStep] = useState(1);
+  const [foundData, setFoundData] = useState(null);
+  const [trackingId, setTrackingId] = useState(null);
+
   const companies = [
     {
       id: 1,
@@ -110,6 +116,33 @@ const Companies = () => {
     if (score >= 70) return 'bg-amber-100';
     return 'bg-red-100';
   };
+
+  function handleConnect(company) {
+    setConnectionModal(company);
+    setConnectionStep(1);
+  }
+
+  function handleConsent() {
+    setConnectionStep(2);
+    setTimeout(() => {
+      const mockData = {
+        count: 9,
+        types: ['Personal Information', 'Purchase History', 'Location Data', 'Device Information', 'Preferences']
+      };
+      setFoundData(mockData);
+      setConnectionStep(3);
+    }, 3000);
+  }
+
+  function generateTrackingId() {
+    const id = 'TB-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+    setTrackingId(id);
+    setConnectionStep(4);
+  }
+
+  function navigateToTracking() {
+    window.location.href = `/tracking/${trackingId}?company=${connectionModal.name}`;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
@@ -268,12 +301,12 @@ const Companies = () => {
 
                 {/* Action Buttons */}
                 <div className="flex gap-2 sm:gap-3">
-                  <Link 
-                    to={`/company/${company.id}`}
+                  <button 
+                    onClick={() => handleConnect(company)}
                     className="flex-1 px-4 py-2 sm:px-6 sm:py-3 bg-blue-600 text-white text-center rounded-xl font-bold hover:bg-blue-700 transition-all duration-200 text-sm sm:text-base"
                   >
-                    View
-                  </Link>
+                    Connect
+                  </button>
                   <button className="px-3 py-2 sm:px-4 sm:py-3 border-2 border-blue-600 text-blue-600 rounded-xl font-bold hover:bg-blue-600 hover:text-white transition-all duration-200">
                     <Star className="h-4 w-4 sm:h-5 sm:w-5" />
                   </button>
@@ -307,6 +340,95 @@ const Companies = () => {
           </div>
         </div>
       </div>
+
+      {/* Connection Modal */}
+      {connectionModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 transform transition-all shadow-2xl">
+            {connectionStep === 1 && (
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Shield className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Connect to {connectionModal.name}</h3>
+                <p className="text-gray-600 mb-6">Give TrustBridge consent to access and scan your data with {connectionModal.name} to ensure transparency.</p>
+                <div className="space-y-3">
+                  <button 
+                    onClick={handleConsent}
+                    className="w-full px-6 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all"
+                  >
+                    Grant Consent
+                  </button>
+                  <button 
+                    onClick={() => setConnectionModal(null)}
+                    className="w-full px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-bold hover:bg-gray-50 transition-all"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {connectionStep === 2 && (
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Loader2 className="h-8 w-8 text-blue-600 animate-spin" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Sending Connection Request</h3>
+                <p className="text-gray-600 mb-4">Connecting to {connectionModal.name}...</p>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="bg-blue-600 h-2 rounded-full animate-pulse" style={{width: '60%'}}></div>
+                </div>
+              </div>
+            )}
+
+            {connectionStep === 3 && foundData && (
+              <div className="text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Check className="h-8 w-8 text-green-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Data Found!</h3>
+                <p className="text-gray-600 mb-4">We found <span className="font-bold text-blue-600">{foundData.count} data entries</span> that {connectionModal.name} possesses about you.</p>
+                <div className="bg-blue-50 rounded-xl p-4 mb-6">
+                  <div className="text-sm text-gray-600 space-y-1">
+                    {foundData.types.map((type, index) => (
+                      <div key={index} className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                        <span>{type}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <button 
+                  onClick={generateTrackingId}
+                  className="w-full px-6 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all"
+                >
+                  Generate Tracking ID
+                </button>
+              </div>
+            )}
+
+            {connectionStep === 4 && trackingId && (
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <AlertCircle className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Tracking ID Generated</h3>
+                <p className="text-gray-600 mb-4">Your tracking ID has been created. You'll be redirected to store it securely.</p>
+                <div className="bg-blue-50 rounded-xl p-4 mb-6">
+                  <div className="text-lg font-mono font-bold text-gray-900">{trackingId}</div>
+                </div>
+                <button 
+                  onClick={navigateToTracking}
+                  className="w-full px-6 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all"
+                >
+                  Continue to Tracking Page
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

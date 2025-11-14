@@ -31,6 +31,12 @@ import RealTimeDataUsage from './pages/RealTimeDataUsage';
 import History from './pages/History';
 import Settings from './pages/Settings';
 import UserProfile from './pages/UserProfile';
+import ConsentHub from './pages/ConsentHub';
+import DataFlowVisualization from './pages/DataFlowVisualization';
+import BreachResponse from './pages/BreachResponse';
+import PrivacyRiskCalculator from './pages/PrivacyRiskCalculator';
+import CrossBorderMonitor from './pages/CrossBorderMonitor';
+import TrackingPage from './pages/TrackingPage';
 import APIService from './services/api';
 import MockAuthService from './services/mockAuth';
 import Notifications from './pages/Notifications';
@@ -111,6 +117,16 @@ const AppContent = () => {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/signup" element={!user ? <Register onLogin={handleLogin} /> : <Navigate to="/dashboard" />} />
+          
+          {/* Tracking Page Route with Sidebar */}
+          <Route path="/tracking/:trackingId" element={
+            <ProtectedRoute>
+              <Sidebar user={user} isOpen={sidebarOpen} onToggle={toggleSidebar} onLogout={handleLogout} />
+              <Layout sidebarOpen={sidebarOpen} fullWidth={true}>
+                <TrackingPage />
+              </Layout>
+            </ProtectedRoute>
+          } />
           
           {/* Protected Routes with Sidebar */}
           <Route path="/dashboard" element={
@@ -314,6 +330,51 @@ const AppContent = () => {
               <Sidebar user={user} isOpen={sidebarOpen} onToggle={toggleSidebar} onLogout={handleLogout} />
               <Layout sidebarOpen={sidebarOpen} fullWidth={true}>
                 <ConsentManagement />
+              </Layout>
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/consent-hub" element={
+            <ProtectedRoute>
+              <Sidebar user={user} isOpen={sidebarOpen} onToggle={toggleSidebar} onLogout={handleLogout} />
+              <Layout sidebarOpen={sidebarOpen} fullWidth={true}>
+                <ConsentHub />
+              </Layout>
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/data-flow-visualization" element={
+            <ProtectedRoute>
+              <Sidebar user={user} isOpen={sidebarOpen} onToggle={toggleSidebar} onLogout={handleLogout} />
+              <Layout sidebarOpen={sidebarOpen} fullWidth={true}>
+                <DataFlowVisualization />
+              </Layout>
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/breach-response" element={
+            <ProtectedRoute>
+              <Sidebar user={user} isOpen={sidebarOpen} onToggle={toggleSidebar} onLogout={handleLogout} />
+              <Layout sidebarOpen={sidebarOpen} fullWidth={true}>
+                <BreachResponse />
+              </Layout>
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/privacy-risk-calculator" element={
+            <ProtectedRoute>
+              <Sidebar user={user} isOpen={sidebarOpen} onToggle={toggleSidebar} onLogout={handleLogout} />
+              <Layout sidebarOpen={sidebarOpen} fullWidth={true}>
+                <PrivacyRiskCalculator />
+              </Layout>
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/cross-border-monitor" element={
+            <ProtectedRoute>
+              <Sidebar user={user} isOpen={sidebarOpen} onToggle={toggleSidebar} onLogout={handleLogout} />
+              <Layout sidebarOpen={sidebarOpen} fullWidth={true}>
+                <CrossBorderMonitor />
               </Layout>
             </ProtectedRoute>
           } />

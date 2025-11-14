@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserPlus, Mail, Lock, User, Building2, Eye, EyeOff, CheckCircle } from 'lucide-react';
+import { UserPlus, Mail, Lock, User, Building2, Eye, EyeOff, CheckCircle, CreditCard } from 'lucide-react';
 import APIService from '../services/api';
 
 
@@ -8,18 +8,26 @@ const Register = ({ onLogin }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    nin: ''
   });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [agreeToPolicy, setAgreeToPolicy] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
+
+    if (!agreeToPolicy) {
+      setError('Please agree to the Privacy Policy to continue.');
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await APIService.registerUser(formData);
@@ -114,6 +122,22 @@ const Register = ({ onLogin }) => {
           </div>
 
           <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">NIN (National Identification Number)</label>
+            <div className="relative">
+              <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <input
+                type="text"
+                required
+                value={formData.nin}
+                onChange={(e) => setFormData({ ...formData, nin: e.target.value })}
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder="Enter your NIN"
+                maxLength="11"
+              />
+            </div>
+          </div>
+
+          <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -135,11 +159,25 @@ const Register = ({ onLogin }) => {
             </div>
           </div>
 
-
+          <div className="flex items-start space-x-3">
+            <input
+              type="checkbox"
+              id="privacy-policy"
+              checked={agreeToPolicy}
+              onChange={(e) => setAgreeToPolicy(e.target.checked)}
+              className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            />
+            <label htmlFor="privacy-policy" className="text-sm text-gray-600">
+              I have read and agree with TrustBridge{' '}
+              <a href="#" className="text-blue-600 hover:text-blue-700 underline">
+                Privacy Policy
+              </a>
+            </label>
+          </div>
 
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || !agreeToPolicy}
             className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {loading ? 'Creating Account...' : 'Create Account'}

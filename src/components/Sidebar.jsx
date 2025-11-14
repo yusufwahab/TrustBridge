@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Building2, FileText, BarChart3, Shield, Users, LogOut, Menu, PlusCircle, Zap, Activity, Bell, Settings, User, Monitor, History, Eye, AlertTriangle, UserPlus } from 'lucide-react';
+import { Home, Building2, FileText, BarChart3, Shield, Users, LogOut, Menu, PlusCircle, Zap, Activity, Bell, Settings, User, Monitor, History, Eye, AlertTriangle, UserPlus, ToggleLeft, Share2, Calculator, Globe } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import trustBridgeLogo from '../assets/TrustBridgeLogo.png';
 import { useNavigation } from '../contexts/NavigationContext';
@@ -25,6 +25,11 @@ const Sidebar = ({ user, isOpen = true, onToggle, onLogout }) => {
     { path: '/dashboard', label: 'Dashboard', icon: BarChart3 },
     { path: '/companies', label: 'Companies', icon: Building2 },
     { path: '/data-connections', label: 'My Data', icon: Shield },
+    { path: '/consent-hub', label: 'Consent Hub', icon: ToggleLeft },
+    { path: '/data-flow-visualization', label: 'Data Flow', icon: Share2 },
+    { path: '/breach-response', label: 'Breach Alerts', icon: Bell },
+    { path: '/privacy-risk-calculator', label: 'Risk Calculator', icon: Calculator },
+    { path: '/cross-border-monitor', label: 'Cross-Border', icon: Globe },
     { path: '/policy-upload', label: 'Policy Upload', icon: FileText },
     { path: '/register-company', label: 'Register Company', icon: UserPlus },
     { path: '/nitda-complaint', label: 'File Complaint', icon: AlertTriangle },

@@ -3,6 +3,7 @@ import { Upload, Award, Shield, AlertTriangle, CheckCircle, Clock, FileText, Bui
 import { useState, useEffect } from 'react';
 import { useUser } from '../contexts/UserContext';
 import APIService from '../services/api';
+import DataFlowDiagram from '../components/DataFlowDiagram';
 
 // Import company logos
 import JumiaLogo from '../assets/Jumia_logo.jpg';
@@ -187,6 +188,65 @@ const Dashboard = () => {
         <div className="grid lg:grid-cols-3 gap-3 sm:gap-6">
           {/* Left Column - Main Content */}
           <div className="lg:col-span-2 space-y-3 sm:space-y-6">
+            {/* Real-Time Data Flow Visualization */}
+            <DataFlowDiagram />
+
+            {/* Recent Activity */}
+            <div className="premium-card rounded-xl sm:rounded-2xl p-4 sm:p-8">
+              <h2 className="text-lg sm:text-2xl font-black text-gray-900 mb-4 sm:mb-6">
+                Recent <span className="text-blue-600">Activity</span>
+              </h2>
+              <div className="space-y-4">
+                {[
+                  {
+                    icon: Shield,
+                    title: 'Policy Analysis Completed',
+                    description: 'NDPR compliance analysis finished for TechCorp Nigeria Ltd',
+                    time: '2 hours ago',
+                    color: 'blue'
+                  },
+                  {
+                    icon: CheckCircle,
+                    title: 'Data Request Processed',
+                    description: 'Successfully processed data access request from citizen',
+                    time: '5 hours ago',
+                    color: 'green'
+                  },
+                  {
+                    icon: Building2,
+                    title: 'New Company Connected',
+                    description: 'Paystack has been added to your data connections',
+                    time: '1 day ago',
+                    color: 'purple'
+                  }
+                ].map((activity, index) => (
+                  <div key={index} className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                      activity.color === 'blue' ? 'bg-blue-100 text-blue-600' :
+                      activity.color === 'green' ? 'bg-green-100 text-green-600' :
+                      'bg-purple-100 text-purple-600'
+                    }`}>
+                      <activity.icon className="h-5 w-5" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-gray-900 mb-1">{activity.title}</h4>
+                      <p className="text-gray-600 text-sm mb-2">{activity.description}</p>
+                      <div className="flex items-center gap-1 text-xs text-gray-500">
+                        <Clock className="h-3 w-3" />
+                        {activity.time}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <Link 
+                to="/action-history" 
+                className="block mt-6 text-center px-6 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors"
+              >
+                View Full History
+              </Link>
+            </div>
+
             {/* Compliance Overview */}
             <div className="premium-card rounded-xl sm:rounded-2xl p-4 sm:p-8">
               <h2 className="text-lg sm:text-2xl font-black text-gray-900 mb-4 sm:mb-6">
@@ -264,62 +324,6 @@ const Dashboard = () => {
                   <div className="text-xs sm:text-sm font-semibold text-red-600">Critical</div>
                 </div>
               </div>
-            </div>
-
-            {/* Recent Activity */}
-            <div className="premium-card rounded-xl sm:rounded-2xl p-4 sm:p-8">
-              <h2 className="text-lg sm:text-2xl font-black text-gray-900 mb-4 sm:mb-6">
-                Recent <span className="text-blue-600">Activity</span>
-              </h2>
-              <div className="space-y-4">
-                {[
-                  {
-                    icon: Shield,
-                    title: 'Policy Analysis Completed',
-                    description: 'NDPR compliance analysis finished for TechCorp Nigeria Ltd',
-                    time: '2 hours ago',
-                    color: 'blue'
-                  },
-                  {
-                    icon: CheckCircle,
-                    title: 'Data Request Processed',
-                    description: 'Successfully processed data access request from citizen',
-                    time: '5 hours ago',
-                    color: 'green'
-                  },
-                  {
-                    icon: Building2,
-                    title: 'New Company Connected',
-                    description: 'Paystack has been added to your data connections',
-                    time: '1 day ago',
-                    color: 'purple'
-                  }
-                ].map((activity, index) => (
-                  <div key={index} className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                      activity.color === 'blue' ? 'bg-blue-100 text-blue-600' :
-                      activity.color === 'green' ? 'bg-green-100 text-green-600' :
-                      'bg-purple-100 text-purple-600'
-                    }`}>
-                      <activity.icon className="h-5 w-5" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-gray-900 mb-1">{activity.title}</h4>
-                      <p className="text-gray-600 text-sm mb-2">{activity.description}</p>
-                      <div className="flex items-center gap-1 text-xs text-gray-500">
-                        <Clock className="h-3 w-3" />
-                        {activity.time}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <Link 
-                to="/action-history" 
-                className="block mt-6 text-center px-6 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors"
-              >
-                View Full History
-              </Link>
             </div>
 
             {/* Data Usage Insights */}

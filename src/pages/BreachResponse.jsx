@@ -145,12 +145,12 @@ const BreachResponse = () => {
   };
 
   return (
-    <div className="min-h-screen bg-blue-50 p-3 sm:p-6">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-3 sm:p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-6 sm:mb-8">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-3 sm:mb-4">
-            Breach <span className="text-red-600">Response</span>
+            Breach <span className="text-blue-600">Response</span>
           </h1>
           <p className="text-sm sm:text-base lg:text-lg text-gray-600">
             Instant alerts and automated protection for data breaches
@@ -159,9 +159,9 @@ const BreachResponse = () => {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-8">
-          <div className="bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-sm border border-gray-200">
+          <div className="bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200">
             <div className="flex items-center justify-between mb-2 sm:mb-4">
-              <AlertTriangle className="h-4 w-4 sm:h-6 sm:w-6 text-red-600" />
+              <AlertTriangle className="h-4 w-4 sm:h-6 sm:w-6 text-blue-600" />
               <span className="text-lg sm:text-2xl font-black text-gray-900">
                 {breaches.filter(b => b.status === 'active').length}
               </span>
@@ -170,9 +170,9 @@ const BreachResponse = () => {
             <p className="text-xs sm:text-sm text-gray-600">Requiring attention</p>
           </div>
 
-          <div className="bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-sm border border-gray-200">
+          <div className="bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200">
             <div className="flex items-center justify-between mb-2 sm:mb-4">
-              <Shield className="h-4 w-4 sm:h-6 sm:w-6 text-green-600" />
+              <Shield className="h-4 w-4 sm:h-6 sm:w-6 text-blue-600" />
               <span className="text-lg sm:text-2xl font-black text-gray-900">
                 {breaches.reduce((acc, b) => acc + b.actionsTaken.length, 0)}
               </span>
@@ -181,7 +181,7 @@ const BreachResponse = () => {
             <p className="text-xs sm:text-sm text-gray-600">Executed automatically</p>
           </div>
 
-          <div className="bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-sm border border-gray-200">
+          <div className="bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200">
             <div className="flex items-center justify-between mb-2 sm:mb-4">
               <CheckCircle className="h-4 w-4 sm:h-6 sm:w-6 text-blue-600" />
               <span className="text-lg sm:text-2xl font-black text-gray-900">
@@ -192,9 +192,9 @@ const BreachResponse = () => {
             <p className="text-xs sm:text-sm text-gray-600">Successfully handled</p>
           </div>
 
-          <div className="bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-sm border border-gray-200">
+          <div className="bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200">
             <div className="flex items-center justify-between mb-2 sm:mb-4">
-              <Bell className="h-4 w-4 sm:h-6 sm:w-6 text-purple-600" />
+              <Bell className="h-4 w-4 sm:h-6 sm:w-6 text-blue-600" />
               <span className="text-lg sm:text-2xl font-black text-gray-900">
                 {breaches.reduce((acc, b) => acc + b.affectedUsers, 0).toLocaleString()}
               </span>
@@ -205,7 +205,7 @@ const BreachResponse = () => {
         </div>
 
         {/* Auto Response Settings */}
-        <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-200 p-4 sm:p-6 mb-6 sm:mb-8">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6 mb-6 sm:mb-8">
           <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-4">Automatic Response Settings</h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <label className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
@@ -252,11 +252,11 @@ const BreachResponse = () => {
         {/* Breach Alerts */}
         <div className="space-y-4 sm:space-y-6">
           {breaches.map((breach) => (
-            <div key={breach.id} className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-200 p-4 sm:p-6">
+            <div key={breach.id} className="bg-white rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 p-4 sm:p-6">
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                 <div className="flex items-start gap-3">
-                  <div className="p-2 bg-red-100 rounded-lg">
-                    <AlertTriangle className="h-5 w-5 sm:h-6 sm:w-6 text-red-600" />
+                  <div className="p-2 bg-blue-100 rounded-lg">
+                    <AlertTriangle className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                   </div>
                   <div>
                     <h3 className="text-base sm:text-lg font-bold text-gray-900">{breach.company}</h3>
@@ -354,7 +354,7 @@ const BreachResponse = () => {
         {/* Breach Details Modal */}
         {selectedBreach && (
           <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50 backdrop-blur-sm p-4">
-            <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 max-h-96 overflow-y-auto">
+            <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 max-h-96 overflow-y-auto border border-gray-200">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl font-bold text-gray-900">Breach Details - {selectedBreach.company}</h3>
                 <button

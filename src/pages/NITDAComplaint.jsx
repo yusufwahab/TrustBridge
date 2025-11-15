@@ -184,7 +184,6 @@ const NITDAComplaint = () => {
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleInputChange}
-                  required
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-red-500 focus:outline-none text-sm sm:text-base"
                   placeholder="Enter your full name"
                 />
@@ -196,7 +195,6 @@ const NITDAComplaint = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  required
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-red-500 focus:outline-none text-sm sm:text-base"
                   placeholder="your.email@example.com"
                 />
@@ -208,7 +206,6 @@ const NITDAComplaint = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  required
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-red-500 focus:outline-none text-sm sm:text-base"
                   placeholder="+234 XXX XXX XXXX"
                 />
@@ -239,7 +236,6 @@ const NITDAComplaint = () => {
                   name="respondentName"
                   value={formData.respondentName}
                   onChange={handleInputChange}
-                  required
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none text-sm sm:text-base"
                 >
                   <option value="">Select company/organization...</option>
@@ -290,7 +286,6 @@ const NITDAComplaint = () => {
                   name="violationCategory"
                   value={formData.violationCategory}
                   onChange={handleInputChange}
-                  required
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-red-500 focus:outline-none text-sm sm:text-base"
                 >
                   <option value="">Select violation type...</option>
@@ -305,7 +300,6 @@ const NITDAComplaint = () => {
                   name="dataType"
                   value={formData.dataType}
                   onChange={handleInputChange}
-                  required
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-red-500 focus:outline-none text-sm sm:text-base"
                 >
                   <option value="">Select data type...</option>
@@ -333,7 +327,6 @@ const NITDAComplaint = () => {
                 name="description"
                 value={formData.description}
                 onChange={handleInputChange}
-                required
                 rows={6}
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-red-500 focus:outline-none resize-none text-sm sm:text-base"
                 placeholder="Provide a detailed description of the NDPR violation..."
@@ -444,7 +437,6 @@ const NITDAComplaint = () => {
                   name="consentProcessing"
                   checked={formData.consentProcessing}
                   onChange={handleInputChange}
-                  required
                   className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                 />
                 <span className="text-sm text-gray-700">
@@ -457,7 +449,6 @@ const NITDAComplaint = () => {
                   name="accuracyDeclaration"
                   checked={formData.accuracyDeclaration}
                   onChange={handleInputChange}
-                  required
                   className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                 />
                 <span className="text-sm text-gray-700">
@@ -470,8 +461,7 @@ const NITDAComplaint = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={!isFormValid()}
-            className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
+            className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base"
           >
             <Send className="h-5 w-5" />
             Submit Complaint to NITDA

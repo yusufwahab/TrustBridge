@@ -110,7 +110,7 @@ const Homepage = () => {
                 <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 ml-2 sm:ml-3 text-white" />
               </Link>
               <button 
-                onClick={() => alert('Sorry, the video is not available now')}
+                onClick={() => window.open('https://youtu.be/lstCbWgqU8k', '_blank')}
                 className="inline-flex items-center justify-center px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 bg-white border-2 border-blue-600 text-blue-600 text-base sm:text-lg lg:text-xl rounded-xl sm:rounded-2xl font-bold hover:bg-blue-50 transition-all duration-200"
               >
                 <Play className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 mr-2 sm:mr-3 text-blue-600" />
